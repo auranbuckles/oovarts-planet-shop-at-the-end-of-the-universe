@@ -19,7 +19,6 @@ String.prototype.titleize = function() {
 // click events on feature show page
 
 $(function() {
-	var currentId;
 
 	$(".show-orders").on("click", function(e) {
     // prevent response from loading a new page
@@ -27,7 +26,7 @@ $(function() {
 
     $(this).data('clicked', true);
 
-    currentId = $(".js-next").attr("data-id");
+    var currentId = $(".js-next").attr("data-id");
 
     $.get("/features/" + currentId + "/orders").success(function(json) {
     	console.log(currentId);
