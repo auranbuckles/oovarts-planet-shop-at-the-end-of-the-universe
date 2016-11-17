@@ -92,13 +92,23 @@ function Feature(attributes) {
 }
 
 Feature.success = function(response) {
-	var feature = new Feature(response);
-	var featureLi = feature.renderLi();
-	// featureLi through renderLi() is built from handlebars and the Feature object prototype
-  $("#features-list ul").append(featureLi);
+  // debugger;
+  if (!!response.id) {
+    var feature = new Feature(response);
+    var featureLi = feature.renderLi();
+    // featureLi through renderLi() is built from handlebars and the Feature object prototype
+    $("#features-list ul").append(featureLi);
+    $('.error-messages').empty();
+    return;
+  }
+
+  // $('.error-messages').remove();
+  for(var message in response) { $('.error-messages').append(response[message] + "<br>") }
+
 }
 
 Feature.error = function(response) {
+  debugger;
 	console.log("Error", response);
 }
 
@@ -116,23 +126,27 @@ Feature.prototype.renderLi = function() {
 
 $(function() {
 
-	$("#new_feature").on('submit', function(e) {
-		e.preventDefault();
+	$("#new_feature").on('submit', sendForm);
 
-	// 	$.ajax({
-	// 		type: "post",
-	// 		url: "/features",
-	// 		data: $(this).serialize();
-	// 		success: function(response) {
-	// 			alert("success")
-	// 		}
-	// 	})
-
-		var values = $(this).serialize();
-		var posting = $.post('/features', values);
-		posting.success(Feature.success)
-		.error(Feature.error)
-	});
+  function sendForm(e) {
+    e.preventDefault() 
+    var errors = $('.error-messages')
+    errors.empty();
+    var name = $("#name").val();
+    var description = $("#description").val();
+    if (name === "" && description === "") {
+      errors.append("Name and description cannot be blank.");
+    } else if (name === "") {
+      errors.append("Name cannot be blank.");
+    } else if(description === "") {
+      errors.append("Description cannot be blank.");
+    } else {
+      var values = $(this).serialize();
+      return $.post('/features', values)
+              .then(Feature.success)
+              .catch(Feature.error)
+    };
+  };
 });
 
 

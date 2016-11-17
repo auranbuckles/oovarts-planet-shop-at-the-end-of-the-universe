@@ -19,29 +19,34 @@
 	<h2>Add A Feature</h2>
 	
 	<%= form_for @feature do |f| %>
+
+		<div class="error-messages"></div>
+		
 		<% if @feature.errors.any? %>
-	    <div id="error_explanation">
+<!-- 	    <div id="error_explanation">
 	      <h3>
-	        <%= pluralize(@feature.errors.count, "error") %>
+	        <%#= pluralize(@feature.errors.count, "error") %>
 	        prohibited this form from being submitted:
 	      </h3>
 
 	      <ul>
-	      <% @feature.errors.full_messages.each do |msg| %>
+	      <%# @feature.errors.full_messages.each do |msg| %>
 	        <li><%= msg %></li>
-	      <% end %>
+	      <%# end %>
 	      </ul>
-	    </div>
+	    </div> -->
 	  <% end %>
 	
 		<div class="form-group">
+			<div class="error_messages"></div>
+
 			<h3><%= f.label :name %></h3>
-	    <%= f.text_field :name, :class => "form-control" %>
+	    <%= f.text_field :name, :class => "form-control", id: 'name' %>
 		</div>
 
 		<div class="form-group">
 			<h3><%= f.label :description %></h3>
-	    <%= f.text_area :description, :class => "form-control" %>
+	    <%= f.text_area :description, :class => "form-control", id: 'description' %>
 		</div>
 	
 		<%= f.submit 'Create New Feature', class: "btn btn-default submit-btn" %>

@@ -29,3 +29,7 @@ h1.logo a, h1.logo a:hover {
 .container {
 	padding-bottom: 5em;
 }
+
+.error-messages {
+	color: red;
+}

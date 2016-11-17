@@ -14,13 +14,12 @@ class FeaturesController < ApplicationController
   end
 
   def create
+    # binding.pry
     @feature = Feature.new(feature_params)
-    if !@feature.valid?
-      flash[:alert] = "Please make sure you have entered in the correct information."
-      # redirect_to features_path
-    else
-      @feature.save
+    if @feature.save
       render json: @feature, status: 201 
+    else
+      render json: @feature.errors.full_messages
     end
   end
 
