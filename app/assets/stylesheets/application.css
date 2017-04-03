@@ -14,9 +14,15 @@
  *= require_self
  */
 
+.all {
+	background-image: url("background.jpg");
+	background-color: black;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
 h1.logo {
 	text-align: center;
-	background-color: black;
 	color: #EBD9FA;
 	padding: 1.5em;
 }
@@ -26,10 +32,36 @@ h1.logo a, h1.logo a:hover {
 	text-decoration: none;
 }
 
+a {
+	color: white;
+}
+
+ul li a {
+	color: black;
+}
+
 .container {
 	padding-bottom: 5em;
+}
+
+.jumbotron {
+	background-color: #dcd7e0;
 }
 
 .error-messages {
 	color: red;
 }
+
+/*buttons*/
+
+.btn-purple {
+	background-color: #ebd9fa;
+}
+
+/*tables*/
+
+table {
+	color: white;
+}
+
+

@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="jumbotron col-md-6">
+<div class="row jumbotron">
+	<div class="col-md-6">
 		<h1 id="featureName"><%= @feature.name.titleize %></h1>
 		<p id="featureDescription"><%= @feature.description %></p>
 	</div>
@@ -11,11 +11,11 @@
 </div>
 
 <div class="row">
-	<button class="js-previous btn btn-default" data-id="<%= @feature.id %>">Previous</button>
+	<button class="js-previous btn btn-purple" data-id="<%= @feature.id %>">Previous</button>
 
-	<button class="btn btn-default show-orders">Show all orders for this feature</button>
+	<button class="btn btn-purple show-orders">Show all orders for this feature</button>
 	
-	<button class="js-next btn btn-default" data-id="<%= @feature.id %>">Next</button>
+	<button class="js-next btn btn-purple" data-id="<%= @feature.id %>">Next</button>
 </div> <br>
 
 <div class="orders-list">
