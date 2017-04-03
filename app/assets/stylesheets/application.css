@@ -22,6 +22,7 @@
 }
 
 h1.logo {
+	font-weight: 800;
 	text-align: center;
 	color: #EBD9FA;
 	padding: 1.5em;
@@ -46,6 +47,10 @@ ul li a {
 
 .jumbotron {
 	background-color: #dcd7e0;
+}
+
+.intro {
+	margin-bottom: 400px;
 }
 
 .error-messages {
